@@ -1,0 +1,28 @@
+.header {
+    width: 100%;
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #D7DAE5;
+    font-family: sans-serif;
+    font-weight: normal;
+  }
+
+  .grid {
+    display: flex;
+  }
+  
+  .grid-item {
+    width: 33.33333%;
+    height: 500px;
+  }
+  .item-1 {
+    background-color: #FACFAD
+  }
+  .item-2 {
+    background-color: white
+  }
+  .item-3 {
+    background-color: greenyellow
+  }

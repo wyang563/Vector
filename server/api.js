@@ -56,21 +56,14 @@ router.post("/user", (req, res) => {
     user.name = req.body.new_name;
     user.save();
   })
-  
-  // const newUser = new User({
-  //   name: req.name,
-  //   googleid: req.googleid,
-  //   colleges: req.colleges,
-  //   college_type: req.college_type,
-  //   app_deadlines: req.app_deadlines,
-  //   decision_dates: req.decision_dates,
-  //   main_essays: req.main_essays,
-  //   num_supps: req.num_supps,
-  //   portfolio: req.portfolio,
-  //   recs: req.recs,
-  //   std_tests: req.std_tests
-  // })
-  // newUser.save();
+});
+
+router.post("/addCollege", (req, res) => {
+  // req contains 3 attributes: user, attribute of user you want to change, and the val the attribute should be changed to
+  User.findById(req.body.id_num).then((user) => {
+    user.name = req.body.new_college;
+    user.save();
+  })
 });
 
 router.all("*", (req, res) => {

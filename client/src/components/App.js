@@ -3,6 +3,7 @@ import { Router } from "@reach/router";
 import NotFound from "./pages/NotFound.js";
 import Skeleton from "./pages/Skeleton.js";
 import Profile from "./pages/Profile.js";
+import AddCollege from "./pages/AddCollege.js";
 import { navigate } from "@reach/router";
 
 import "../utilities.css";
@@ -45,6 +46,7 @@ const App = () => {
       <Router>
         <Skeleton path="/" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
         <Profile path="/Profile" />
+        <AddCollege path="/AddCollege" userId={userId} />
         <NotFound default />
       </Router>
     </>
