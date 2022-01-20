@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Router } from "@reach/router";
 import NotFound from "./pages/NotFound.js";
 import Skeleton from "./pages/Skeleton.js";
+import Profile from "./pages/Profile.js";
+import { navigate } from "@reach/router";
 
 import "../utilities.css";
 
@@ -42,6 +44,7 @@ const App = () => {
     <>
       <Router>
         <Skeleton path="/" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
+        <Profile path="/Profile" />
         <NotFound default />
       </Router>
     </>

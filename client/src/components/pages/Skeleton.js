@@ -1,5 +1,7 @@
 import React, { Component, useState, useEffect } from "react";
 import GoogleLogin, { GoogleLogout } from "react-google-login";
+import { navigate } from "@reach/router";
+
 
 import "../../utilities.css";
 import "./Skeleton.css";
@@ -12,6 +14,9 @@ const Skeleton = ({ userId, handleLogin, handleLogout }) => {
 
   const [userIdentity, setIdentity] = useState(undefined);
 
+  const profileClick = () => {
+    navigate("/Profile");
+  }
 
   get("/api/whoami").then((user) => {
     if (user._id) {
@@ -21,6 +26,7 @@ const Skeleton = ({ userId, handleLogin, handleLogout }) => {
     }
   });
 
+  
   return (
     <>
       <h1>Vector</h1>
@@ -28,12 +34,15 @@ const Skeleton = ({ userId, handleLogin, handleLogout }) => {
       {userId ? (
         <div>
           <h2>Welcome back {userIdentity}!</h2>
-        <GoogleLogout
-          clientId={GOOGLE_CLIENT_ID}
-          buttonText="Logout"
-          onLogoutSuccess={handleLogout}
-          onFailure={(err) => console.log(err)}
-        />
+          <br></br>
+          <button onClick={profileClick}>View Your Profile</button>
+          <br></br>
+          <GoogleLogout
+            clientId={GOOGLE_CLIENT_ID}
+            buttonText="Logout"
+            onLogoutSuccess={handleLogout}
+            onFailure={(err) => console.log(err)}
+          />
         </div>
       ) : (
         <div>
