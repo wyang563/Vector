@@ -39,12 +39,15 @@ const AddCollege = ({userId}) => {
 
   const nameEl = React.useRef(null);
 
+  var arr = null;
+
   const handleSubmit = e => {
     e.preventDefault();
     const body = {
       id_num: userId_Num,
       new_college: nameEl.current.value
     }
+    console.log (nameEl.current.value)
     post("/api/addCollege", body);
   };
 

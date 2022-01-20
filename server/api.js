@@ -50,6 +50,12 @@ router.get("/user", (req, res) => {
   })
 })
 
+router.get("/colleges", (req, res) => {
+  User.findById(req.query.userid).then((user) => {
+    res.send(user.colleges);
+  })
+})
+
 router.post("/user", (req, res) => {
   // req contains 3 attributes: user, attribute of user you want to change, and the val the attribute should be changed to
   User.findById(req.body.id_num).then((user) => {
@@ -61,7 +67,7 @@ router.post("/user", (req, res) => {
 router.post("/addCollege", (req, res) => {
   // req contains 3 attributes: user, attribute of user you want to change, and the val the attribute should be changed to
   User.findById(req.body.id_num).then((user) => {
-    user.name = req.body.new_college;
+    user.colleges.push (req.body.new_college);
     user.save();
   })
 });
