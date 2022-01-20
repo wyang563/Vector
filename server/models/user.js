@@ -11,7 +11,8 @@ const UserSchema = new mongoose.Schema({
   num_supps: [Number],
   portfolio: [Boolean],
   recs: [Number],
-  std_tests: [Boolean]
+  std_tests: [Boolean],
+  submitted: [Boolean]
   
 });
 

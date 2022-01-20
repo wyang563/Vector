@@ -10,16 +10,17 @@ const GOOGLE_CLIENT_ID = "121479668229-t5j82jrbi9oejh7c8avada226s75bopn.apps.goo
 
 const Skeleton = ({ userId, handleLogin, handleLogout }) => {
 
-  const [userIdentity, setUserId] = useState(undefined);
+  const [userIdentity, setIdentity] = useState(undefined);
 
 
   get("/api/whoami").then((user) => {
     if (user._id) {
-      setUserId(user.name);
+      setIdentity(user.name);
+      const body = {id_num: user._id, new_name: "penis"}
+      post("/api/user", body);
     }
   });
-    
-  
+
   return (
     <>
       <h1>Vector</h1>
