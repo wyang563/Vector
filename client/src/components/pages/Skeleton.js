@@ -21,8 +21,8 @@ const Skeleton = ({ userId, handleLogin, handleLogout }) => {
   get("/api/whoami").then((user) => {
     if (user._id) {
       setIdentity(user.name);
-      const body = {id_num: user._id, new_name: "penis"}
-      post("/api/user", body);
+      // const body = {id_num: user._id, new_name: "penis"}
+      // post("/api/user", body);
     }
   });
 

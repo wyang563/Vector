@@ -1,21 +1,41 @@
-import React, { useState, useEffect } from "react";
+import React, { Component, useState, useEffect } from "react";
 import { navigate } from "@reach/router";
 import { get, post } from "../../utilities";
+import "./Profile.css";
 
-const Profile = (props) => {
-  const [userInfo, setUserInfo] = useState();
 
-  useEffect(() => {
-    document.title = "News Feed";
-    get("/api/user").then((userObj) => {
-      setUseInfo(userObj);
-    });
-  }, []);
+const Profile = () => {
+
+  const [userName, setName] = useState(undefined);
+  const [userId, setId] = useState(undefined);
+
+  get("/api/whoami").then((user) => {
+    if (user._id) {
+      setName (user.name);
+      setId (user._id);
+    }
+  });
+
   return (
-    <div>
-      <p>Really advanced web design</p>
-    </div>
-  );
-};
+    <>
+     {userId ? (
+        <div>
+          <nav className="header"> Welcome back {userName}</nav>
+          <div className="grid">
+            <div className="grid-item item-1">Foo</div>
+            <div className="grid-item item-2">Bar</div>
+            <div className="grid-item item-3">Baz</div>
+          </div>
+        </div>
+      ) : (
+        <div>
+          <p>Please return to main and sign up</p>
+        </div>
+      )}
+    </>
+  )
+
+}
+
 
 export default Profile;
