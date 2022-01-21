@@ -8,23 +8,13 @@ import "./Skeleton.css";
 import { get, post } from "../../utilities";
 
 //TODO: REPLACE WITH YOUR OWN CLIENT_ID
-const GOOGLE_CLIENT_ID = "121479668229-t5j82jrbi9oejh7c8avada226s75bopn.apps.googleusercontent.com";
+const GOOGLE_CLIENT_ID = "400347907603-e5992vs3iq7e7jes7t4h9874f43ps9e1.apps.googleusercontent.com";
 
-const Skeleton = ({ userId, handleLogin, handleLogout }) => {
-
-  const [userIdentity, setIdentity] = useState(undefined);
+const Skeleton = ({ handleLogin, handleLogout, userId, userIdentity }) => {
 
   const profileClick = () => {
     navigate("/Profile");
   }
-
-  get("/api/whoami").then((user) => {
-    if (user._id) {
-      setIdentity(user.name);
-      const body = {id_num: user._id, new_name: "penis"}
-      post("/api/user", body);
-    }
-  });
 
   
   return (

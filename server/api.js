@@ -73,6 +73,14 @@ router.post("/user", (req, res) => {
   // newUser.save();
 });
 
+router.post("/addCollege", (req, res) => {
+  // req contains 3 attributes: user, attribute of user you want to change, and the val the attribute should be changed to
+  User.findById(req.body.id_num).then((user) => {
+    user.colleges.push(req.body.new_college);
+    user.save();
+  })
+});
+
 router.all("*", (req, res) => {
   console.log(`API route not found: ${req.method} ${req.url}`);
   res.status(404).send({ msg: "API route not found" });
