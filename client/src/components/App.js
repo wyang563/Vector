@@ -17,12 +17,14 @@ import { get, post } from "../utilities";
  */
 const App = () => {
   const [userId, setUserId] = useState(undefined);
+  const [userIdentity, setUserIdentity] = useState(undefined);
 
   useEffect(() => {
     get("/api/whoami").then((user) => {
       if (user._id) {
         // they are registed in the database, and currently logged in.
         setUserId(user._id);
+        setUserIdentity (user.name);
       }
     });
   }, []);
@@ -44,9 +46,12 @@ const App = () => {
   return (
     <>
       <Router>
-        <Skeleton path="/" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
-        <Profile path="/Profile" />
-        <AddCollege path="/AddCollege" userId={userId} />
+        <Skeleton path="/" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} userIdentity={userIdentity} />
+        <Profile path="/Profile" 
+        userId={userId} 
+        userIdentity={userIdentity}
+        />
+        <AddCollege path="/AddCollege" userId={userId}/>
         <NotFound default />
       </Router>
     </>

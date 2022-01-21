@@ -1,7 +1,9 @@
 import React, { Component, useState, useEffect } from "react";
 import { navigate } from "@reach/router";
 import { get, post } from "../../utilities";
-import "./Profile.css";
+import "./AddCollege.css";
+
+// TODO: route back to homepage upon submission
 
 const AddCollege = ({userId}) => {
 
@@ -38,6 +40,15 @@ const AddCollege = ({userId}) => {
   }, [])
 
   const nameEl = React.useRef(null);
+  const typeEl = React.useRef (null);
+  const deadlineEl = React.useRef(null);
+  const ddateEl = React.useRef(null);
+  const mainEl = React.useRef(null);
+  const nsuppsEl = React.useRef(null);
+  const nrecsEl = React.useRef(null);
+  const stdEl = React.useRef(null);
+  const porEl = React.useRef(null);
+
 
   var arr = null;
 
@@ -45,9 +56,16 @@ const AddCollege = ({userId}) => {
     e.preventDefault();
     const body = {
       id_num: userId_Num,
-      new_college: nameEl.current.value
+      new_college: nameEl.current.value,
+      type: typeEl.current.value,
+      deadline: deadlineEl.current.value,
+      ddate: ddateEl.current.value,
+      main: mainEl.current.value,
+      nsupps: nsuppsEl.current.value,
+      nrecs: nrecsEl.current.value,
+      std: stdEl.current.value,
+      port: porEl.current.value
     }
-    console.log (nameEl.current.value)
     post("/api/addCollege", body);
   };
 
@@ -55,9 +73,41 @@ const AddCollege = ({userId}) => {
     <>
      {userId ? (
         <div>
-          <form onSubmit={handleSubmit}>
-            <input type="text" placeholder="username" ref={nameEl} />
-            <button type="submit" className="myButton">Submit</button>
+          <form className={"form-style-1", "center"} onSubmit={handleSubmit}>
+            <br></br>
+            <font className="buttin-54" font size="+2"> <strong> Add a new college to apply to: </strong></font>
+            <br></br>
+            <br></br>
+            <br></br>
+            <input type="text" placeholder="College" size="50" ref={nameEl} />
+            <br></br>
+            <br></br>
+            <input type="text" placeholder="Type (R, T, S)" size="50" ref={typeEl}/>
+            <br></br>
+            <br></br>
+            <input type="text" placeholder="Application Deadline (MM/DD/YY)" size="50" ref={deadlineEl} />
+            <br></br>
+            <br></br>
+            <input type="text" placeholder="Decision Date (MM/DD/YY)" size="50" ref={ddateEl} />
+            <br></br>
+            <br></br>
+            <input type="text" placeholder="Main essay required? ('Y' or 'N')" size="50" ref={mainEl} />
+            <br></br>
+            <br></br>
+            <input type="text" placeholder="# of supplements?" size="50" ref={nsuppsEl} />
+            <br></br>
+            <br></br>
+            <input type="text" placeholder="# of rec letters?" size="50" ref={nrecsEl} />
+            <br></br>
+            <br></br>
+            <input type="text" placeholder="Standardized test(s) required? ('Y' or 'N')" size="50" ref={stdEl} />
+            <br></br>
+            <br></br>
+            <input type="text" placeholder="Portfolio submission allowed? ('Y' or 'N')" size="50" ref={porEl} />
+            <br></br>
+            <br></br>
+            <br></br>
+            <button type="submit" className="button-54">Submit</button>
           </form>
         </div>
       ) : (
