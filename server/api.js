@@ -50,36 +50,64 @@ router.get("/user", (req, res) => {
   })
 })
 
+router.get("/colleges", (req, res) => {
+  User.findById(req.query.userid).then((user) => {
+    res.send(user.colleges);
+  })
+})
+
 router.post("/user", (req, res) => {
   // req contains 3 attributes: user, attribute of user you want to change, and the val the attribute should be changed to
   User.findById(req.body.id_num).then((user) => {
     user.name = req.body.new_name;
     user.save();
   })
-  
-  // const newUser = new User({
-  //   name: req.name,
-  //   googleid: req.googleid,
-  //   colleges: req.colleges,
-  //   college_type: req.college_type,
-  //   app_deadlines: req.app_deadlines,
-  //   decision_dates: req.decision_dates,
-  //   main_essays: req.main_essays,
-  //   num_supps: req.num_supps,
-  //   portfolio: req.portfolio,
-  //   recs: req.recs,
-  //   std_tests: req.std_tests
-  // })
-  // newUser.save();
 });
 
 router.post("/addCollege", (req, res) => {
   // req contains 3 attributes: user, attribute of user you want to change, and the val the attribute should be changed to
   User.findById(req.body.id_num).then((user) => {
-    user.colleges.push(req.body.new_college);
+    user.colleges.push (req.body.new_college);
+    user.college_type.push (req.body.type);
+    user.app_deadlines.push (req.body.deadline);
+    user.decision_dates.push (req.body.ddate);
+    if (req.body.main==='Y'){
+      user.main_essays.push (true);
+    }
+    else{
+      user.main_essays.push (false);
+    }
+    user.num_supps.push (req.body.nsupps);
+    user.recs.push (req.body.nrecs);
+    if (req.body.std==='Y'){
+      user.std_tests.push (true);
+    }
+    else{
+      user.std_tests.push (false);
+    }
+    if (req.body.port==='Y'){
+      user.portfolio.push (true);
+    }
+    else{
+      user.portfolio.push (false);
+    }
+    user.submitted.push (false); //default is false
     user.save();
   })
 });
+
+// name: String,
+// googleid: String,
+// colleges: [String],
+// college_type: [String],
+// app_deadlines: [String],
+// decision_dates: [String],
+// main_essays: [Boolean],
+// num_supps: [Number],
+// portfolio: [Boolean],
+// recs: [Number],
+// std_tests: [Boolean],
+// submitted: [Boolean]
 
 router.all("*", (req, res) => {
   console.log(`API route not found: ${req.method} ${req.url}`);

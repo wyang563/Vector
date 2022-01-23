@@ -3,7 +3,7 @@ import { Router } from "@reach/router";
 import NotFound from "./pages/NotFound.js";
 import Skeleton from "./pages/Skeleton.js";
 import Profile from "./pages/Profile.js";
-import AddColleges from "./pages/AddColleges.js";
+import AddCollege from "./pages/AddCollege.js";
 import { navigate } from "@reach/router";
 
 import "../utilities.css";
@@ -24,24 +24,16 @@ const App = () => {
       if (user._id) {
         // they are registed in the database, and currently logged in.
         setUserId(user._id);
-        setUserIdentity(user.name);
+        setUserIdentity (user.name);
       }
     });
   }, []);
-
-  // useEffect(() => {
-  //   const query = { userid: userId};
-  //   get("/api/user", query).then((userInfo) => {
-  //     setUserIdentity(userInfo.name);
-  //   })
-  // })
 
   const handleLogin = (res) => {
     console.log(`Logged in as ${res.profileObj.name}`);
     const userToken = res.tokenObj.id_token;
     post("/api/login", { token: userToken }).then((user) => {
       setUserId(user._id);
-      setUserIdentity(user.name);
       post("/api/initsocket", { socketid: socket.id });
     });
   };
@@ -59,7 +51,7 @@ const App = () => {
         userId={userId} 
         userIdentity={userIdentity}
         />
-        <AddColleges path="/AddColleges" userId={userId}/>
+        <AddCollege path="/AddCollege" userId={userId}/>
         <NotFound default />
       </Router>
     </>
