@@ -17,6 +17,9 @@ const Skeleton = ({ userId, handleLogin, handleLogout }) => {
   const profileClick = () => {
     navigate("/Profile");
   }
+  const dashboardClick = () => {
+    navigate("/dashboard");
+  }
 
   get("/api/whoami").then((user) => {
     if (user._id) {
@@ -39,7 +42,8 @@ const Skeleton = ({ userId, handleLogin, handleLogout }) => {
           <div>
             <h2>Welcome back {userIdentity}!</h2>
             <br></br>
-            <button className="button-54" onClick={profileClick}>View Your Profile</button>
+            <button className="button-54" onClick={profileClick}>Your Profile</button>
+            <button className="button-54" onClick={dashboardClick}>Your Dashboard</button>
             <br></br>
             <br></br>
             <br></br>

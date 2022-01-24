@@ -5,6 +5,7 @@ import Skeleton from "./pages/Skeleton.js";
 import Profile from "./pages/Profile.js";
 import AddCollege from "./pages/AddCollege.js";
 import { navigate } from "@reach/router";
+import Dashboard from "./pages/Dashboard.js";
 
 import "../utilities.css";
 
@@ -52,6 +53,7 @@ const App = () => {
         userIdentity={userIdentity}
         />
         <AddCollege path="/AddCollege" userId={userId}/>
+        <Dashboard path="/dashboard" userId={userId} userIdentity={userIdentity}/>
         <NotFound default />
       </Router>
     </>
