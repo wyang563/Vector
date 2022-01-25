@@ -5,6 +5,7 @@ import Skeleton from "./pages/Skeleton.js";
 import Profile from "./pages/Profile.js";
 import AddCollege from "./pages/AddCollege.js";
 import { navigate } from "@reach/router";
+import Dashboard from "./pages/Dashboard.js";
 
 import "../utilities.css";
 
@@ -17,12 +18,14 @@ import { get, post } from "../utilities";
  */
 const App = () => {
   const [userId, setUserId] = useState(undefined);
+  const [userIdentity, setUserIdentity] = useState(undefined);
 
   useEffect(() => {
     get("/api/whoami").then((user) => {
       if (user._id) {
         // they are registed in the database, and currently logged in.
         setUserId(user._id);
+        setUserIdentity (user.name);
       }
     });
   }, []);
@@ -49,9 +52,13 @@ const App = () => {
         userId={userId}
       </NavBar>
       <Router>
-        <Skeleton path="/" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
-        <Profile path="/Profile" />
-        <AddCollege path="/AddCollege" userId={userId} />
+        <Skeleton path="/" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} userIdentity={userIdentity} />
+        <Profile path="/Profile" 
+        userId={userId} 
+        userIdentity={userIdentity}
+        />
+        <AddCollege path="/AddCollege" userId={userId}/>
+        <Dashboard path="/dashboard" userId={userId} userIdentity={userIdentity}/>
         <NotFound default />
       </Router>
     </>
