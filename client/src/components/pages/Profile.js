@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { navigate, Link } from "@reach/router";
 import { get, post } from "../../utilities";
@@ -161,7 +162,6 @@ const Profile = (props) => {
         </div>
       )}
     </>
-
       // <div>
       //   <h1>{props.userIdentity}'s Planner</h1>
       //   {deadlinesList}
@@ -169,8 +169,7 @@ const Profile = (props) => {
       // </div>
     )
   }
-  
-
 }
+
 
 export default Profile;

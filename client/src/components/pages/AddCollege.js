@@ -1,9 +1,11 @@
 import React, { Component, useState, useEffect } from "react";
 import { navigate } from "@reach/router";
 import { get, post } from "../../utilities";
+
 import "./AddCollege.css";
 
 // TODO: route back to homepage upon submission
+
 
 const AddCollege = ({userId}) => {
 

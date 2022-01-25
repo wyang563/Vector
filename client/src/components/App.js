@@ -46,6 +46,11 @@ const App = () => {
 
   return (
     <>
+      <NavBar>
+        handleLogin={handleLogin}
+        handleLogout={handleLogout}
+        userId={userId}
+      </NavBar>
       <Router>
         <Skeleton path="/" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} userIdentity={userIdentity} />
         <Profile path="/Profile" 
