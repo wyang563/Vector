@@ -83,7 +83,9 @@ const AddCollege = ({userId}) => {
             <input type="text" placeholder="College" size="50" ref={nameEl} />
             <br></br>
             <br></br>
-            <input type="checkbox" value="Reach Target Safety" placeholder="Pick College Type" size="50" ref={typeEl}/>
+            <p>Pick College Type</p>
+            <input type="checkbox" id="Pick College Type" ref={typeEl}/>
+            
             <br></br>
             <br></br>
             <input type="text" placeholder="Application Deadline (MM/DD/YY)" size="50" ref={deadlineEl} />

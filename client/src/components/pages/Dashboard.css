@@ -9,23 +9,12 @@
   font-weight: normal;
 }
 
-.grid {
-  display: flex;
-}
+.table {
+  width: 100%;
+  background: #828B8A;
+  font-family: sans-serif;
+  font-weight: normal;
 
-.grid-item {
-  width: 33.33333%;
-  height: 90vh;
-  overflow-y: scroll;
-}
-.item-1 {
-  background-color: white
-}
-.item-2 {
-  background-color: white
-}
-.item-3 {
-  background-color: white
 }
 
 .NavBar-container {
