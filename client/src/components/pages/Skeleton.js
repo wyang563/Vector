@@ -43,6 +43,7 @@ const Skeleton = ({ userId, handleLogin, handleLogout }) => {
             <h2>Welcome back {userIdentity}!</h2>
             <br></br>
             <button className="button-54" onClick={profileClick}>Your Profile</button>
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button className="button-54" onClick={dashboardClick}>Your Dashboard</button>
             <br></br>
             <br></br>
