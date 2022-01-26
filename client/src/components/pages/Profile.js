@@ -3,6 +3,11 @@ import React, { useState, useEffect } from "react";
 import { navigate, Link } from "@reach/router";
 import { get, post } from "../../utilities";
 import Clock from 'react-live-clock';
+import {TodoList} from '@muchhadd/react-todo-list';
+
+//imported from https://www.npmjs.com/package/@muchhadd/react-todo-list?activeTab=readme,
+//We did not write the ToDoList code ourselves
+
 import "./Profile.css";
 
 const Profile = (props) => {
@@ -127,6 +132,7 @@ const Profile = (props) => {
                 <h2>
                  EST: <Clock format={'HH:mm:ss'} ticking={true} timezone={'US/Eastern'} />
                 </h2>
+                <TodoList />
               </div>
             </div>
           </div>

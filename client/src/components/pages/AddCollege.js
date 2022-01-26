@@ -75,7 +75,7 @@ const AddCollege = ({userId}) => {
   return (
     <>
      {userId ? (
-        <div>
+        <div className="body">
           <form className={"form-style-1", "center"} onSubmit={handleSubmit}>
             <br></br>
             <font className="buttin-54" font size="+2"> <strong> Add a new college to apply to: </strong></font>
