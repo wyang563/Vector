@@ -1,31 +1,36 @@
 .header {
   width: 100%;
-  height: 10vh;
+  height: 12vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #D7DAE5;
+  background: #F6F4F3;
   font-family: sans-serif;
   font-weight: normal;
 }
 
 .grid {
   display: flex;
+  background-color: #23272A;
+  color: white;
 }
 
 .grid-item {
-  width: 33.33333%;
-  height: 90vh;
+  height: 88vh;
   overflow-y: scroll;
 }
 .item-1 {
-  background-color: white
+  width: 25%;
 }
 .item-2 {
-  background-color: white
+  width: 35%;
 }
 .item-3 {
-  background-color: white
+  width: 40%;
+}
+
+.pdy {
+  padding: 20px;
 }
 
 .NavBar-container {
@@ -88,4 +93,36 @@
   .button-54 {
       padding: 0.25em 0.75em;
   }
+}
+
+.clock {
+  padding: 25px;
+  text-align: center
+}
+
+.button-31 {
+  background-color:#F6F4F3;
+  border-radius: 4px;
+  border-style: none;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Farfetch Basis","Helvetica Neue",Arial,sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+  margin: 0;
+  max-width: none;
+  min-height: 44px;
+  min-width: 10px;
+  outline: none;
+  overflow: hidden;
+  padding: 9px 20px 8px;
+  position: relative;
+  text-align: center;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 33%;
 }
