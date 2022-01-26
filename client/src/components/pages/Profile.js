@@ -5,11 +5,21 @@ import "./Profile.css";
 
 
 const Profile = (props) => {
-
+  const [user, setUser] = useState();
   const [deadlines, setDeadlines] = useState([]);
   const [colleges, setColleges] = useState([]);
   const [decisions, setDecisions] = useState([]);
   const [types, setTypes] = useState([]);
+
+  useEffect(() => {
+    get(`/api/user`, { userid: props.userId }).then((userObj) => {
+      setUser(userObj);
+      setColleges(userObj.colleges);
+      setDeadlines(userObj.app_deadlines);
+      setDecisions(userObj.decision_dates); 
+      setTypes(userObj.college_type);  
+    });
+  }, []);
 
   const handleHome = () => {
     navigate("/");
@@ -23,6 +33,9 @@ const Profile = (props) => {
 
   const handleDelete = (index) => {
     
+  }
+  if (!user) {
+    return (<div> Loading! </div>);
   }
 
 
@@ -39,15 +52,6 @@ const Profile = (props) => {
       </>
     )
   }
-
-  else{
-
-    get("/api/user", {userid: props.userId}).then((user) => {
-      setColleges(user.colleges);
-      setDeadlines(user.app_deadlines);
-      setDecisions(user.decision_dates); 
-      setTypes(user.college_type);
-    })
 
     if (colleges == null){
       hasStuff = false;
@@ -146,7 +150,6 @@ const Profile = (props) => {
       // </div>
     )
   }
-}
 
 
 export default Profile;

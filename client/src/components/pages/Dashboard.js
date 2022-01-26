@@ -9,6 +9,8 @@ const Dashboard = (props) => {
   const [colleges, setColleges] = useState([]);
   const [decisions, setDecisions] = useState([]);
   const [types, setTypes] = useState([]);
+  const [supps, setSupps] = useState([]);
+  const [recs, setRecs] = useState([]);
   const handleHome = () => {
     navigate("/");
   }
@@ -32,6 +34,8 @@ const Dashboard = (props) => {
       setDeadlines(user.app_deadlines);
       setDecisions(user.decision_dates); 
       setTypes(user.college_type);
+      setSupps(user.num_supps);
+      setRecs(user.recs);
     })
     let tableItemsList = [];
     tableItemsList.push(
@@ -49,7 +53,19 @@ const Dashboard = (props) => {
       </thead>
     )
     for (var i=0; i<colleges.length; i++){
-      
+      tableItemsList.push(
+        <tbody>
+          <tr>
+            <th>{colleges[i]}</th>
+            <th>{deadlines[i]}</th>
+            <th>{decisions[i]}</th>
+            <th>{supps[i]}</th>
+            <th>{recs[i]}</th>
+            <th>No</th>
+            <th>NA</th>
+          </tr>
+        </tbody>
+      )
     }
 
     return (
