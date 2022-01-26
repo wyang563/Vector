@@ -1,6 +1,6 @@
 .header {
   width: 100%;
-  height: 75px;
+  height: 10vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,17 +15,17 @@
 
 .grid-item {
   width: 33.33333%;
-  height: 700px;
+  height: 90vh;
   overflow-y: scroll;
 }
 .item-1 {
-  background-color: #FACFAD
+  background-color: white
 }
 .item-2 {
   background-color: white
 }
 .item-3 {
-  background-color: greenyellow
+  background-color: white
 }
 
 .NavBar-container {
