@@ -1,9 +1,11 @@
 import React, { Component, useState, useEffect } from "react";
 import { navigate } from "@reach/router";
 import { get, post } from "../../utilities";
+
 import "./AddCollege.css";
 
 // TODO: route back to homepage upon submission
+
 
 const AddCollege = ({userId}) => {
 
@@ -73,7 +75,7 @@ const AddCollege = ({userId}) => {
   return (
     <>
      {userId ? (
-        <div>
+        <div className="body">
           <form className={"form-style-1", "center"} onSubmit={handleSubmit}>
             <br></br>
             <font className="buttin-54" font size="+2"> <strong> Add a new college to apply to: </strong></font>
@@ -83,9 +85,7 @@ const AddCollege = ({userId}) => {
             <input type="text" placeholder="College" size="50" ref={nameEl} />
             <br></br>
             <br></br>
-            <p>Pick College Type</p>
-            <input type="checkbox" id="Pick College Type" ref={typeEl}/>
-            
+            <input type="text" placeholder="Input type (R for reaches, T for targets, S for safeties)" size="50" ref={typeEl} />
             <br></br>
             <br></br>
             <input type="text" placeholder="Application Deadline (MM/DD/YY)" size="50" ref={deadlineEl} />
